@@ -14,7 +14,7 @@ CREATE TABLE [dbo].[T_Checkin](
 	[HeureIn] [datetime2](7) NULL,
 	[HeureOut] [datetime2](7) NULL,
 	[Id_Table] [int] NULL,
- CONSTRAINT [PK_T_Checkin] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_T_Checkin] PRIMARY KEY CLUSTERED
 (
 	[CodeInvite] ASC
 )WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
@@ -35,5 +35,3 @@ GO
 
 ALTER TABLE [dbo].[T_Checkin] CHECK CONSTRAINT [FK_T_Checkin_T_Tables]
 GO
-
-

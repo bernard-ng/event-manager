@@ -8,7 +8,7 @@ class UsersController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('usersModel');
+        $this->load->model('UsersModel');
         $this->load->library("form_validation");
     }
 
@@ -20,12 +20,12 @@ class UsersController extends Controller
                 $this->form_validation->set_rules('password', 'password', 'required');
 
                 if ($this->form_validation->run()) {
-                    $name       =   $this->input->post('name');
-                    $password   =   $this->inpu->post('password');
-                    $user       =   $this->usersModel->findAlternative(['name, email'], $name);
+                    $name       =   $this->str::escape($this->input->post('name'));
+                    $password   =   $this->input->post('password');
+                    $user       =   $this->UsersModel->findAlternative(['name', 'email'], $name);
 
                     if ($user) {
-                        if ($user->confirmed_at !== null) {
+                       // if ($user->confirmed_at !== null) {
                             if (password_verify($password, $user->password)) {
                                 $this->connect($user);
 
@@ -34,9 +34,9 @@ class UsersController extends Controller
                             } else {
                                 $this->session->set_flashdata('danger', $this->msg['users_bad_identifier']);
                             }
-                        } else {
+                        /* } else {
                             $this->session->set_flashdata('danger', $this->msg['users_not_confirmed']);
-                        }
+                        } */
                     } else {
                         $this->session->set_flashdata('danger', $this->msg['users_bad_identifier']);
                     }
@@ -108,10 +108,10 @@ class UsersController extends Controller
         if ($this->input->method() === "post") {
             $this->load->library('form_validation');
 
-            $this->form_validation->set_rules('name', 'name', "required|alpha_numeric_spaces|min_length[3]");
-            $this->form_validation->set_rules('email', 'email', "required|valid_email");
+            $this->form_validation->set_rules('name', 'name', "required|alpha_numeric_spaces|min_length[3]|max_length[25]");
+            $this->form_validation->set_rules('email', 'email', "required|valid_email|max_length[60]");
             $this->form_validation->set_rules('password', 'password', "required|min_length[8]");
-            $this->form_validation->set_rules('password_confirm', 'password_confirm', "required|min_length[8]|matches[password]");
+            $this->form_validation->set_rules('password_confirm', 'password_confirm', "required|matches[password]");
 
             if ($this->form_validation->run()) {
                 $name           =   $this->input->post('name');
@@ -120,6 +120,7 @@ class UsersController extends Controller
 
                 $this->register($name, $email, $password);
                 $this->session->set_flashdata('success', $this->msg['form_registeration_submitted']);
+                redirect("/login");
             }
         }
 
@@ -141,5 +142,7 @@ class UsersController extends Controller
         $name       =   $this->str::escape($name);
         $email      =   $this->str::escape($email);
         $password   =   $this->str::hash($password);
+
+        $this->UsersModel->insert(compact('name', 'email', 'password'));
     }
 }

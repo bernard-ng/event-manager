@@ -71,4 +71,35 @@ class Model extends \CI_Model
     public function update(array $data)
     {
     }
+
+    /**
+     * recupere les derniers posts
+     * @param integer $number
+     * @return mixed
+     */
+    public function getLast(int $number)
+    {
+        return $this->db->query(
+            $this->db
+                ->limit(intval($number), 0)
+                ->get_compiled_select($this->table)
+        )->result_object();
+    }
+
+
+    /**
+     * renvoi une entree dans la base de donne grace a son id
+     * @param integer $id
+     * @return void
+     */
+    public function find(int $id)
+    {
+        return $this->db
+            ->query(
+                $this->db
+                    ->where("id", intval($id))
+                    ->get_compiled_select($this->table)
+            )
+            ->result_object();
+    }
 }
