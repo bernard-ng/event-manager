@@ -1,0 +1,31 @@
+{
+	"name": "bernard-ng/Application",
+    "description": "coders meetUp website",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bernard Ng",
+            "email": "ngandubernard@gmail.com"
+		},
+		{
+			"name": "Divine Beloti",
+			"email": "divinebeloti@gmail.com"
+		}
+    ],
+    "minimum-stability": "stable",
+    "require": {
+		"php": ">=7.1",
+        "intervention/image": "^2.4",
+        "phpmailer/phpmailer": "^6.0"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.2",
+		"mikey179/vfsStream": "1.1.*"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Application\\" : "src/Application"
+		}
+	}
+}
