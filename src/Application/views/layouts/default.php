@@ -8,5 +8,6 @@
 <body>
     <?php echo $pageContent; ?>
     <?php require(APP."/Views/includes/script.php"); ?>
+    <?php require(APP."/Views/includes/flash-message.php"); ?>
 </body>
 </html>

@@ -16,6 +16,7 @@ class Controller extends \CI_Controller
         $this->load->library('session');
         $this->load->library('str');
         $this->load->library('msg');
+        $this->load->library('flash');
     }
 
 
@@ -71,6 +72,8 @@ class Controller extends \CI_Controller
             $pageName = $this->defaultName;
         }
 
+
+        $variable['flashes'] = $this->flash;
         $pageContent = $this->load->view($view, $variable, true);
 
         $this->load->view(

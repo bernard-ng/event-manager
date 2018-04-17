@@ -12,6 +12,12 @@ class UsersController extends Controller
         $this->load->library("form_validation");
     }
 
+
+    /**
+     * administrator session connexion
+     *
+     * @return void
+     */
     public function login()
     {
         if ($this->isLogged() === false) {
@@ -25,30 +31,30 @@ class UsersController extends Controller
                     $user       =   $this->UsersModel->findAlternative(['name', 'email'], $name);
 
                     if ($user) {
-                       // if ($user->confirmed_at !== null) {
+                        if ($user->confirmed_at !== null) {
                             if (password_verify($password, $user->password)) {
                                 $this->connect($user);
 
-                                $this->session->set_flashdata('success', $this->msg['users_connected']);
+                                $this->flash->set('danger', $this->msg['users_login_success']);
                                 redirect("/admin");
                             } else {
-                                $this->session->set_flashdata('danger', $this->msg['users_bad_identifier']);
+                                $this->flash->set('danger', $this->msg['users_bad_identifier']);
                             }
-                        /* } else {
-                            $this->session->set_flashdata('danger', $this->msg['users_not_confirmed']);
-                        } */
+                        } else {
+                            $this->flash->set('danger', $this->msg['users_not_confirmed']);
+                        }
                     } else {
-                        $this->session->set_flashdata('danger', $this->msg['users_bad_identifier']);
+                        $this->flash->set('danger', $this->msg['users_bad_identifier']);
                     }
                 } else {
-                    $this->session->set_flashdata('danger', $this->msg['form_multi_errors']);
+                    $this->flash->set('danger', $this->msg['form_multi_errors']);
                 }
             }
 
             $this->setTitle('Connexion');
             $this->viewRender('frontend/users/login');
         } else {
-            $this->session->set_flashdata('danger', $this->msg['users_already_connected']);
+            $this->flash->set('danger', $this->msg['users_already_confirmed']);
         }
     }
 
@@ -119,7 +125,7 @@ class UsersController extends Controller
                 $password       =   $this->input->post('password');
 
                 $this->register($name, $email, $password);
-                $this->session->set_flashdata('success', $this->msg['form_registeration_submitted']);
+                $this->session->set_flashdata($this->msg['form_registeration_submitted']);
                 redirect("/login");
             }
         }

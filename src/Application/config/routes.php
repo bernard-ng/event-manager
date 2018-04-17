@@ -11,14 +11,14 @@ $route['default_controller'] = 'HomeController';
 $route['leading'] = 'HomeController';
 $route['sign'] = 'UsersController/sign';
 $route['login'] = 'UsersController/login';
-$router['logout']['get'] = "UsersController/logout";
+$route['logout']['get'] = "UsersController/logout";
 
 
 /**
  * BACK-END CONTROLLER
  * --------------------------------------------------------------------------------
  */
-
+$route['events'] = "AdminController";
 
 
 

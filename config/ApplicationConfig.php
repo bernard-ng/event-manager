@@ -7,7 +7,7 @@ define('APP', ROOT."/src/Application");              //dossier src/Application
 //usefull constant
 define('AUTH_KEY', 'authentified');
 define('TOKEN', 'csrf_token');
-
+define('FLASH_KEY', 'scs_event_flashMessage');
 
 
 

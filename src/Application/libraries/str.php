@@ -171,7 +171,7 @@ class str
 
         switch ($number) {
             case $number >= 0 && $number < 1000:
-                return (string)$number;
+                return (string) $number;
                 break;
 
             case $number >= 1000 && $number < 100000:
@@ -185,7 +185,7 @@ class str
                 break;
 
             default:
-                return $number;
+                return (string) $number;
                 break;
         }
     }

@@ -12,6 +12,6 @@ class UsersModel extends Model
         return $this->db->query(
             "SELECT * FROM {$this->table} WHERE ({$field[0]} = ? OR {$field[1]} =  ?)",
             [$value, $value]
-        )->result_object();
+        )->row();
     }
 }

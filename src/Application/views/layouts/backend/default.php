@@ -11,8 +11,9 @@
     <title><?php echo PageManager::getTitle(); ?></title>
 </head>
 <body>
-    <?php require(APP."/Views/includes/flash-message.php"); ?>
+    <?php require(APP."/Views/includes/menu.php");?>
     <?php echo $page_content; ?>
     <?php require(APP."/Views/includes/script.php"); ?>
+    <?php require(APP."/Views/includes/flash-message.php"); ?>
 </body>
 </html>

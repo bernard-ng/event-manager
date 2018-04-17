@@ -1,19 +1,9 @@
-<?php
-
-use \Ng\Core\Util\Flash;
-use \Ng\Core\Util\Session;
-
-$flash = new Flash(Session::getInstance());
-
-?>
-<?php if ($flash->has()) : ?>
-    <div class="flash" id="flash">
-        <?php foreach ($flash->get() as $type => $message) : ?>
-                <div class="flash-content" >
-                    <i class="icon icon-close flash-close-icon"></i>
-                    <span class="flash-content-icon-<?= $type ?>"><i class="icon icon-info-sign"></i></span>
-                    <span class="flash-content-message"><?= $message ?></span>
-                </div>
+<?php if ($flashes->has()): ?>
+        <?php foreach($flashes->get() as $type => $message): ?>
+            <script type="text/javascript">
+                var message = "<?php echo $message ?>";
+                var type = "<?php echo $type ?>";
+                Materialize.toast(message, 5000, type);
+            </script>
         <?php endforeach; ?>
-    </div>
 <?php endif; ?>
