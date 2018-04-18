@@ -1,3 +1,4 @@
+<?php include(APP."/Views/includes/copyright.txt"); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,7 +7,9 @@
     <title><?= $pageName ?></title>
 </head>
 <body>
-    <?php echo $pageContent; ?>
+    <main>
+        <?php echo $pageContent; ?>
+    </main>
     <?php require(APP."/Views/includes/script.php"); ?>
     <?php require(APP."/Views/includes/flash-message.php"); ?>
 </body>

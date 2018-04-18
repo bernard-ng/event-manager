@@ -9,6 +9,7 @@ class AdminController extends Controller
     public function index()
     {
 
+        // setting of the calendar...
         if (isset($_GET['m'])) {
             $month =  intval($this->input->get('m'));
             $year  =  intval($this->input->get('y'));
@@ -24,12 +25,19 @@ class AdminController extends Controller
             $start :
             $this->calendar->getStratingDay()->modify('last monday');
 
+        $end            =    (clone $start)->modify('+' . (6 * 7 - ($weeks - 1)) . 'days');
         $calendar       =    $this->calendar;
         $current_month  =    $this->calendar->toString();
         $nextMonth      =    $this->calendar->nextMonth()->getMonth();
         $nextYear       =    $this->calendar->nextMonth()->getYear();
         $previousMonth  =    $this->calendar->previousMonth()->getMonth();
         $previousYear   =    $this->calendar->previousMonth()->getYear();
+
+
+
+        //getting events...
+        $events = $this->load->library('event_manager', null, 'events');
+        $evetns = $events->getEventsBetween($start, $end);
 
 
         $this->viewRender('backend/calendar/events', compact(

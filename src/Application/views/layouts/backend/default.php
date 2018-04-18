@@ -1,14 +1,9 @@
-<?php use StorageAdmin\Util\PageManager; ?>
+<?php include(APP."/Views/includes/copyright.txt"); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <?php require(APP."/Views/includes/meta.php"); ?>
     <?php require(APP."/Views/includes/style.php"); ?>
-    <!--<script src="assets/js/lib/turbolinks.js"></script>
-    <script> Turbolinks.start(); </script>-->
-
-    <?php echo PageManager::getMeta(); ?>
-    <title><?php echo PageManager::getTitle(); ?></title>
 </head>
 <body>
     <?php require(APP."/Views/includes/menu.php");?>

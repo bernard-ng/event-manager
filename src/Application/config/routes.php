@@ -18,7 +18,7 @@ $route['logout']['get'] = "UsersController/logout";
  * BACK-END CONTROLLER
  * --------------------------------------------------------------------------------
  */
-$route['events'] = "AdminController";
+$route['events'] = "EventsController";
 
 
 

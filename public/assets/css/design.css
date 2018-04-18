@@ -242,7 +242,7 @@ body, html {
 
 .calendar__table {
     width: 100%;
-    height: calc(100vh - 130px) !important;
+    height: calc(100vh - 170px) !important;
 }
 
 .calendar__table td {

@@ -20,7 +20,7 @@ class UsersController extends Controller
      */
     public function login()
     {
-        if ($this->isLogged() === false) {
+        if ($this->isLogged() !== false) {
             if ($this->input->method() === 'post') {
                 $this->form_validation->set_rules('name', 'name', 'required');
                 $this->form_validation->set_rules('password', 'password', 'required');
@@ -54,7 +54,8 @@ class UsersController extends Controller
             $this->setTitle('Connexion');
             $this->viewRender('frontend/users/login');
         } else {
-            $this->flash->set('danger', $this->msg['users_already_confirmed']);
+            $this->flash->set('danger', $this->msg['users_already_connected']);
+            redirect('/events');
         }
     }
 
