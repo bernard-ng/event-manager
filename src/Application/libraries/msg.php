@@ -26,7 +26,7 @@ class msg implements \ArrayAccess
         'post_delete_success' => 'Votre publication a bien été supprimée',
         'post_delete_failed' => 'Ooups, une erreur est survenue lors de la suppression',
         'post_edit_success' => "Votre publication a bien été édité",
-        'post_not_found' => "Ooups, cette publication n'existe pas ou plus",
+        'post_not_found' => "Ooups, cet event n'existe pas ou plus",
         'post_requires_picture' => "Ajouter une photo de couverture pour votre publication",
         'post_online_success' => "Votre publication est désormais publique",
         'post_already_online' => "Votre publication est déjà publique",

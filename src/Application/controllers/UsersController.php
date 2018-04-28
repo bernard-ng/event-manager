@@ -1,5 +1,4 @@
 <?php
-
 use Application\controllers\Controller;
 
 class UsersController extends Controller
@@ -20,10 +19,10 @@ class UsersController extends Controller
      */
     public function login()
     {
-        if ($this->isLogged() !== false) {
+        if ($this->isLogged() === false) {
             if ($this->input->method() === 'post') {
-                $this->form_validation->set_rules('name', 'name', 'required');
-                $this->form_validation->set_rules('password', 'password', 'required');
+                $this->form_validation->set_rules('name', 'name', "required|alpha_numeric_spaces|min_length[3]|max_length[25]");
+                $this->form_validation->set_rules('password', 'password', "required|min_length[8]");
 
                 if ($this->form_validation->run()) {
                     $name       =   $this->str::escape($this->input->post('name'));
@@ -36,7 +35,7 @@ class UsersController extends Controller
                                 $this->connect($user);
 
                                 $this->flash->set('danger', $this->msg['users_login_success']);
-                                redirect("/admin");
+                                redirect("/events");
                             } else {
                                 $this->flash->set('danger', $this->msg['users_bad_identifier']);
                             }
@@ -67,10 +66,7 @@ class UsersController extends Controller
      */
     private function isLogged(): bool
     {
-        if ($this->session->has_userdata(AUTH_KEY)) {
-            return $this->session->userdata(AUTH_KEY);
-        }
-        return false;
+        return $this->session->has_userdata(AUTH_KEY);
     }
 
 
@@ -82,10 +78,8 @@ class UsersController extends Controller
      */
     private function connect($user): void
     {
-        if ($this->isLogged === false) {
-            $this->session->set_userdata(AUTH_KEY, $user);
-            $this->session->set_userdata(TOKEN, $this->str::setToken(60));
-        }
+        $this->session->set_userdata(AUTH_KEY, $user);
+        $this->session->set_userdata(TOKEN, $this->str::setToken(60));
     }
 
 
@@ -96,13 +90,15 @@ class UsersController extends Controller
      */
     public function logout(): void
     {
-        if ($this->isLogged !== false) {
+        if ($this->isLogged() === true) {
             $this->session->unset_userdata(AUTH_KEY);
             $this->session->unset_userdata(TOKEN);
+            redirect("/login");
+        } else {
+            $this->flash->set('danger', $this->msg['users_not_logged']);
+            redirect("/leading");
         }
-        redirect("/login");
     }
-
 
 
     /**

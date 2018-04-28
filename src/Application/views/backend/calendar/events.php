@@ -16,6 +16,7 @@
                 <?php
                     foreach($days as $k => $day):
                         $date = (clone $start)->modify("+" . ($k + $i * 7) . "days");
+                        $eventsForDay = $events[$date->format('Y-m-d')] ?? [];
                 ?>
                     <td class="<?= $calendar->withInMonth($date)? '' : 'calendar__othermonth' ?>">
                         <?php if ($i === 0): ?>
@@ -23,6 +24,12 @@
                         <?php endif; ?>
 
                         <div class="calendar__day"><?= $date->format('d') ?><div>
+                        <?php foreach($eventsForDay as $event): ?>
+                            <div class="calendar__event">
+                                <?= (new DateTime($event['started']))->format('H:i'); ?> -
+                                <a href="events/<?= $event['id'] ?>"><?= $event['name']; ?></a>
+                            </div>
+                        <?php endforeach; ?>
                     </td>
                 <?php endforeach; ?>
             </tr>

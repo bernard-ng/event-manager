@@ -2764,6 +2764,27 @@ video.responsive-video {
   height: 500px;
 }
 
+.parallax-container.event {
+  margin-top: -50px !important;
+  background: url("/images/banner-2.jpg") rgba(0,0,0,0.5) ;
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: bottom;
+  height: 300px;
+  border-bottom: solid 2px #ccc;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.parallax-container.event h1 {
+  margin: 5px !important;
+  padding-top: 40px;
+  vertical-align: middle;
+
+}
+
+
 .parallax-container .parallax {
   position: absolute;
   top: 0;

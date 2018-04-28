@@ -9,6 +9,15 @@ class event_manager {
      */
     private $EventsModel;
 
+    /**
+     * @var CI_Controller
+     */
+    private $CI;
+
+
+    /**
+     * event_manager constructor.
+     */
     public function __construct()
     {
         $this->CI =& get_instance();
@@ -17,26 +26,41 @@ class event_manager {
     }
 
     /**
-     * recupere tes saves dans son certeau.
+     * recupere les events entre deux dates
      *
      * @param DateTime $start
      * @param DateTime $end
      * @return array
      */
-    public function getEventsBetween (DateTime $start, DateTime $end): array
+    public function getEventsBetween (DateTime $started, DateTime $end): array
     {
-
-
         return $this->EventsModel->getPerMonth(
-            $start->format('Y-m-d 00:00:00'),
+            $started->format('Y-m-d 00:00:00'),
             $end->format('Y-m-d 23:59:59')
         );
     }
 
 
-    public function getEventsBetweenByDay (DateTime $start, DateTime $end) : array
+    /**
+     * recupere les event d'un jour
+     *
+     * @param DateTime $start
+     * @param DateTime $end
+     * @return array
+     */
+    public function getEventsBetweenByDay (DateTime $started, DateTime $end) : array
     {
-
+        $events = $this->getEventsBetween($started, $end);
+        $days = [];
+        foreach ($events as $event) {
+            $date = explode(' ',$event['started'])[0];
+            if (!isset($days[$date])) {
+                $days[$date] = [$event];
+            } else {
+                $days[$date][] = $event;
+            }
+        }
+        return $days;
     }
 
 }

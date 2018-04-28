@@ -13,7 +13,7 @@ $db['default'] = [
     'dbprefix' => '',
     'pconnect' => false,
     'db_debug' => (ENVIRONMENT !== 'production'),
-    'cache_on' => true,
+    'cache_on' => (ENVIRONMENT == 'production'),
     'cachedir' => APPPATH."cache/database/",
     'char_set' => 'utf8',
     'dbcollat' => 'utf8_general_ci',

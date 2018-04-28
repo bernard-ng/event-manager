@@ -12,6 +12,14 @@ class EventsModel extends Model
         return $this->db->query(
             "SELECT * FROM events WHERE started  BETWEEN ? AND ?",
             [$start, $end]
-        )->result_object();
+        )->result_array();
+    }
+
+    public function find(int $id)
+    {
+        return $this->db->query(
+            "SELECT *FROM events WHERE id = ?",
+            [$id]
+        )->result_object()[0];
     }
 }

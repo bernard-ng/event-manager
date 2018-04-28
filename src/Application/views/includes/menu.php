@@ -3,7 +3,7 @@
         <nav class="blue darken-2">
             <div class="nav-wrapper">
                 <div class="row container">
-                    <a href="/" class="brand-logo">
+                    <a href="/<?= $this->uri->segment(1) ?>" class="brand-logo">
                         <?= ucfirst($this->uri->segment(1)) ?>
                     </a>
                     <a href="#" data-activates="mobile-side-nav" class="show-on-large button-collapse btn blue-grey darken-4 right">

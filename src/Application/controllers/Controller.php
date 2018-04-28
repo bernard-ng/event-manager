@@ -57,11 +57,20 @@ class Controller extends \CI_Controller
 
 
     /**
+     * restriction des pages.
+     * @return bool;
+     */
+    public function loggedOnly(): bool
+    {
+        return $this->session->has_userdata(AUTH_KEY);
+    }
+
+
+    /**
      * permet de rendre une vue avec un layout
      *
      * @param string $view
      * @param array $variable
-     * @param string $layout
      * @return void
      */
     public function viewRender(string $view, array $variable = []): void

@@ -19,6 +19,7 @@ $route['logout']['get'] = "UsersController/logout";
  * --------------------------------------------------------------------------------
  */
 $route['events'] = "EventsController";
+$route['events/(:num)'] = "EventsController/show/$1";
 
 
 
