@@ -9,20 +9,20 @@
         <div class="row l12">
             <div class="row col l6 offset-l3 animated fast slideInUp">
                 <div class="hero-titles-no-animated col l12 s12" id="loginBox" >
-                    <div class="section-title hero-title-main-2"> <i class="icon icon-log-in"></i> &nbsp; Inscription</div>
+                    <div class="section-title hero-title-main-2"> <i class="icon icon-log-in"></i>Inscription</div>
                     <form method="POST" action="">
                         <div class="input-field col s12">
                             <span class="helper-text red-text darken-4">
                                 <?= form_error('name') ?>
                             </span>
-                            <input type="text" id="name" name="name" placeholder="Nom" value="<?= set_value('name') ?>" >
+                            <input type="text" id="name" name="name" placeholder="Nom" value="<?= set_value('name', '', true) ?>" >
                         </div>
 
                         <div class="input-field col s12">
                             <span class="helper-text red-text darken-4">
                                 <?= form_error('email') ?>
                             </span>
-                            <input type="email" id="email" name="email" placeholder="email" value="<?= set_value('email') ?>" >
+                            <input type="email" id="email" name="email" placeholder="email" value="<?= set_value('email', '', true) ?>" >
                         </div>
 
                         <div class="input-field col s12">

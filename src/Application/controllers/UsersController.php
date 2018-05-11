@@ -93,7 +93,7 @@ class UsersController extends Controller
         if ($this->isLogged() === true) {
             $this->session->unset_userdata(AUTH_KEY);
             $this->session->unset_userdata(TOKEN);
-            redirect("/login");
+            redirect("/leading");
         } else {
             $this->flash->set('danger', $this->msg['users_not_logged']);
             redirect("/leading");
@@ -124,6 +124,8 @@ class UsersController extends Controller
                 $this->register($name, $email, $password);
                 $this->session->set_flashdata($this->msg['form_registeration_submitted']);
                 redirect("/login");
+            } else {
+                $this->session->set_flashdata($this->msg['form_multi_errors']);
             }
         }
 

@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php require(APP."/Views/includes/menu.php");?>
-    <?php echo $page_content; ?>
+    <?php echo $pageContent; ?>
     <?php require(APP."/Views/includes/script.php"); ?>
     <?php require(APP."/Views/includes/flash-message.php"); ?>
 </body>

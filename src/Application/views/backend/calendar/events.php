@@ -35,5 +35,7 @@
             </tr>
         <?php endfor; ?>
     </table>
-
 </section>
+<a class="btn fixed-action-btn btn-floating btn-large blue darken-3" href="events/add">
+    <i class="icon icon-plus"></i>
+</a>

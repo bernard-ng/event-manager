@@ -8,7 +8,7 @@ $route['default_controller'] = 'HomeController';
  * FRONT-END CONTROLLER
  * --------------------------------------------------------------------------------
  */
-$route['leading'] = 'HomeController';
+$route['leading']['get'] = 'HomeController';
 $route['sign'] = 'UsersController/sign';
 $route['login'] = 'UsersController/login';
 $route['logout']['get'] = "UsersController/logout";
@@ -18,8 +18,9 @@ $route['logout']['get'] = "UsersController/logout";
  * BACK-END CONTROLLER
  * --------------------------------------------------------------------------------
  */
-$route['events'] = "EventsController";
-$route['events/(:num)'] = "EventsController/show/$1";
+$route['events']['get'] = "EventsController";
+$route['events/add'] = "EventsController/add";
+$route['events/(:num)']['get'] = "EventsController/show/$1";
 
 
 
