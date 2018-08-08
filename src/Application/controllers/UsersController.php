@@ -8,7 +8,6 @@ class UsersController extends Controller
     {
         parent::__construct();
         $this->load->model('UsersModel');
-        $this->load->library("form_validation");
     }
 
 

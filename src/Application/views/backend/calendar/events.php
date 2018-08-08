@@ -25,9 +25,9 @@
 
                         <div class="calendar__day"><?= $date->format('d') ?><div>
                         <?php foreach($eventsForDay as $event): ?>
-                            <div class="calendar__event">
+                            <div class="calendar__event truncate">
                                 <?= (new DateTime($event['started']))->format('H:i'); ?> -
-                                <a href="events/<?= $event['id'] ?>"><?= $event['name']; ?></a>
+                                <a href="events/<?= $event['id'] ?>"><i class="icon icon-calendar"></i> voir</a>
                             </div>
                         <?php endforeach; ?>
                     </td>

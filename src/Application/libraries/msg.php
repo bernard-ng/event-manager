@@ -46,7 +46,7 @@ class msg implements \ArrayAccess
         "form_reset_submitted" => "Les instructions de rappel de mot de passe vous ont été envoyées par mail",
         "form_registration_submitted" => "Un email de confirmation de compte vous a été envoyé, veuillez le confirmer pour continuer",
         'form_contact_submitted' => 'Nous avons bien reçu votre message et comptons vous répondre dans le plus bref délais',
-        'form_event_sumbinitted' => "Votre Event a été crée...",
+        'form_event_submitted' => "Votre Event a été crée...",
 
 
         //FILES
